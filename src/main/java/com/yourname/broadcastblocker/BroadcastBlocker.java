@@ -1,5 +1,7 @@
 package com.yourname.broadcastblocker;
 
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,7 +29,7 @@ public class BroadcastBlocker extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onBroadcast(BroadcastMessageEvent event) {
-        String msg = event.message().toLowerCase();
+        String msg = PlainTextComponentSerializer.plainText().serialize(event.message()).toLowerCase();
         for (String pattern : blockedPatterns) {
             if (msg.contains(pattern)) {
                 event.setCancelled(true);
