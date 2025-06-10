@@ -1,0 +1,6 @@
+name: BroadcastBlocker
+main: com.yourname.broadcastblocker.BroadcastBlocker
+version: 1.0
+api-version: 1.20
+description: Blocks Playit.gg and related broadcast messages from chat.
+author: YourName
