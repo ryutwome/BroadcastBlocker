@@ -1,7 +1,6 @@
 package com.yourname.broadcastblocker;
 
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
-
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +23,12 @@ public class BroadcastBlocker extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
-        getLogger().info("BroadcastBlocker enabled!");
+        getLogger().info("BroadcastBlocker enabled for Paper 1.21.6!");
+    }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("BroadcastBlocker disabled!");
     }
 
     @EventHandler
@@ -45,9 +49,9 @@ public class BroadcastBlocker extends JavaPlugin implements Listener {
         for (String pattern : blockedPatterns) {
             if (msg.contains(pattern)) {
                 event.setCancelled(true);
+                getLogger().info("Blocked player chat: " + msg);
                 break;
             }
         }
     }
 }
-
